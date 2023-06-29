@@ -101,7 +101,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "{{baseurl_lms}}/assignmentsubmission/studentbatch/3705"
+				"url": "{{baseurl_lms}}/assignmentsubmission/studentbatch/{BATCHid}"
 			},
 			"response": []
 		},
