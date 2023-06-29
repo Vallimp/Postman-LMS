@@ -1,0 +1,446 @@
+{
+	"info": {
+		"_postman_id": "9852e113-3fb0-4837-bd0e-70c2b1636aaa",
+		"name": "User Module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User Roles",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "33e43786-66b2-41e5-ac94-4dd0f6b71613",
+						"exec": [
+							"pm.environment.set(\"First_Name\", \"Sampleteam_\"+ \"{{$randomInt}}\");\r",
+							"const randomNumber = _.random(1000000000,9999999999);\r",
+							"//const randomMobile = Math.random().toString().slice(1,12);\r",
+							"pm.environment.set(\"Phone_number\", randomNumber );\r",
+							" \r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8a14ead0-86d5-4129-919a-13fc7e91611b",
+						"exec": [
+							"//tests[\"Success Status\"] = responseCode.code == 201;\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"setting user id as environment variable\", function () {\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"userId_env\", jsonData.userId);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "1739f6c8-78b3-4083-8996-9e6584f1c4b2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userComments\": \"{{Comments}}\",\r\n    \"userEduPg\": \"{{UserEduPG}}\",\r\n    \"userEduUg\": \"{{UserEduUG}}\",\r\n    \"userFirstName\": \"{{First_Name}}\",\r\n    \"userLastName\": \"{{LastName}}\",\r\n    \"userLinkedinUrl\": \"{{LinkedInURL}}\",\r\n    \"userLocation\": \"{{Location}}\",\r\n    \"userMiddleName\": \"{{MiddleName}}\",\r\n    \"userPhoneNumber\": {{Phone_number}},\r\n    \"userRoleMaps\": [\r\n        {\r\n            \"roleId\": \"{{UserRoleID}}\",\r\n            \"userRoleStatus\": \"{{UserRoleStatus}}\"\r\n        }\r\n    ],\r\n    \"userTimeZone\": \"{{UserTimeZone}}\",\r\n    \"userVisaStatus\": \"{{UserVisaStatus}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/users/users/roleStatus"
+			},
+			"response": []
+		},
+		{
+			"name": "Create User Roles Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9897ba9b-e9d6-45d4-a33a-6701a77ae92b",
+						"exec": [
+							"pm.collectionVariables.set(\"First_Name\", \"AAA_\"+ \"{{$randomInt}}\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e21521cf-0905-44f2-820b-043d444d2010",
+						"exec": [
+							"tests[\"Success Status\"] = responseCode.code == 201;\r",
+							"\r",
+							"var response = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"UserID\", response.userId);\r",
+							"console.log(response.userId);\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "d8fa2627-7451-4f50-8457-07e2cdad7488",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userComments\": \"Staff role\",\r\n    \"userEduPg\": \"MBA\",\r\n    \"userEduUg\": \"Btech\",\r\n    \"userFirstName\": \"Sampleteam_311\",\r\n    \"userLastName\": \"Elliott\",\r\n    \"userLinkedinUrl\": \"sampleteam_02@linkedin.org\",\r\n    \"userLocation\": \"Herndon\",\r\n    \"userMiddleName\": \"Mary\",\r\n    \"userPhoneNumber\": 6341169744,\r\n    \"userRoleMaps\": [\r\n        {\r\n            \"roleId\": \"R02\",\r\n            \"userRoleStatus\": \"Pending\"\r\n        }\r\n    ],\r\n    \"userTimeZone\": \"PST\",\r\n    \"userVisaStatus\": \"GC-EAD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/users/users/roleStatus"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single User Detail by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "89d87619-92d9-4ade-acdd-e0344f969e56",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "115dfddd-f63d-4e2d-8906-39203a445249",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/users/users/{{userId_env}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4ddc0b3c-89c6-4e25-90f2-b6399cd75cc3",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "69f3ebe8-74ff-4a26-8c31-7970d604f39c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/users/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Info by Roles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a3b9e0d-6323-4130-8321-57500fdf8fc8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "15e9e696-da5a-49ff-bc0a-475e4f89dd86",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/users/users/roles"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Staff",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "518e345f-78ea-4ed0-b539-6729f404e9da",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "f80ec703-3c3a-413b-a2d8-3279e0722ea1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/users/users/getAllStaff"
+			},
+			"response": []
+		},
+		{
+			"name": "GET by userName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7683b7cb-8a60-44d3-beb2-c27a4a5310f9",
+						"exec": [
+							"var response = JSON.parse(\"responseBody\");\r",
+							"tests[\"first name\"] = response.R[68].userFirstName == \"AAA\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "2d028057-4f97-4ea6-acaf-bc09c0820e3f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/users/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Update single User by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8984af86-99dd-4c56-bbfc-ba0aa672ec93",
+						"exec": [
+							"tests[\"check status\"] = responseCode.code = 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "227a61b6-55e0-42e8-86bd-f0ee109b91a5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userFirstName\": \"AAA_275\",\r\n  \"userLastName\": \"Last Name\",\r\n  \"userTimeZone\": \"EST\",\r\n  \"userVisaStatus\": \"H1B\",\r\n  \"userPhoneNumber\": 1111111807,\r\n  \"userComments\": \"String\",\r\n  \"userEduPg\": \"User Edu PG\",\r\n  \"userEduUg\": \"User Edu UG\",\r\n  \"userId\": \"U480\",\r\n  \"userLinkedinUrl\": \"LinkedIn URL\",\r\n  \"userLocation\": \"NC\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/users/users/{{userId_env}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Role Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "20e53338-3637-4a7e-a5d9-6e90c0acf922",
+						"exec": [
+							"tests[\"check status\"] = responseCode.code == 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "11e8ea17-5e90-4c4d-ae4c-7a0df25a216d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"roleId\": \"R02\",\r\n  \"userRoleStatus\": \"Updated to R03 from R02\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/users/users/roleStatus/{{userId_env}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Update User Role Program Batch Status",
+			"_postman_id": "7fa63085-bf62-40e0-8cfa-cf2d6e19c3d2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"programId\": 5868,\r\n\"roleId\": \"LMS_Staff\",\r\n  \"userId\": \"U6865\",\r\n  \"userRoleProgramBatches\": [\r\n    {\r\n      \"batchId\": 4769,\r\n      \"userRoleProgramBatchStatus\": \"Active\"\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/users/users/roleProgramBatchStatus/U6865"
+			},
+			"response": []
+		},
+		{
+			"name": "Create New User Roles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Success Status\"] = responseCode.code == 201;\r",
+							"\r",
+							"tests[\"Failure Status\"] = responseCode.code == 400;"
+						],
+						"type": "text/javascript",
+						"id": "2f679e50-0611-4e43-a0a7-2ea11ef2d5dc"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"First_Name\", \"BitMiners_\"+\"{{$randomInt}}\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"id": "35a6e7b9-e4c7-42c0-aa63-0d5c51039c4c"
+					}
+				}
+			],
+			"_postman_id": "8abe79eb-b1ea-437f-9bf2-f421ce4de3e8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"userComments\": \"{{Comments}}\",\r\n\"userEduPg\": \"{{User Edu PG}}\",\r\n\"userEduUg\": \"{{User Edu UG}}\",\r\n\"userFirstName\": \"{{First_Name}}\",\r\n\"userLastName\": \"{{Last Name}}\",\r\n\"userLinkedinUrl\": \"{{LinkedIn URL}}\",\r\n\"userLocation\": \"{{Location}}\",\r\n\"userMiddleName\": \"{{Middle Name}}\",\r\n\"userPhoneNumber\": {{Phone No}},\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"{{User Role ID}}\",\r\n\"userRoleStatus\": \"{{User Role Status}}\"\r\n}\r\n],\r\n\"userTimeZone\": \"{{Time Zone}}\",\r\n\"userVisaStatus\": \"{{Visa status}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BaseURL}}/users/users/roleStatus"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Req based on User ID",
+			"_postman_id": "366871a3-6cfc-474d-a169-bfa6afe1baf8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseurl_lms}}/users/users/{{userId_env}}"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3a7ee853-e42a-4ddf-94e6-3158d8aec127",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d230bd94-04ed-4f64-8540-2475e8634c59",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "6620eef3-de7a-4cb2-9387-d30be4fc8c4d",
+			"key": "First_Name",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "771846fe-44aa-4965-baa6-f20732e680e8",
+			"key": "UserID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "e5d516ab-8b65-4033-adbd-339319640c18",
+			"key": "FirstName",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
