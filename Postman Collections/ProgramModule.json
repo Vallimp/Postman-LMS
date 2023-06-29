@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "b41fe087-e320-4077-b4eb-4172bec62c97",
+		"name": "Program_Module_June2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All programs",
+			"_postman_id": "369a76b2-885c-412a-ad4c-a2ec2191c152",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/allPrograms"
+			},
+			"response": []
+		},
+		{
+			"name": "Create program",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "606b6432-af38-4f01-8e64-57e97797bb91",
+						"exec": [
+							"//validate status code\r",
+							"pm.test(\"status code validation\", ()=>{\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"//set id as envt variable\r",
+							"pm.test(\"setting id as environment variable\", function () {\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"programId_env\", jsonData.programId);\r",
+							"pm.environment.set(\"programName_env\", jsonData.programName);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e90b0a0e-1ec7-43c1-b44d-5d1760292705",
+						"exec": [
+							"const serialNo = Math.floor(Math.random() * 900) +100;\r",
+							"pm.environment.set(\"serialNo_env\", serialNo);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "bf11b629-15f4-4a07-b7db-b2c0145a7694",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n  \"programName\": \"Sampleteam_{{serialNo_env}}\",\r\n  \"programDescription\": \"{{programDescription}}\",\r\n  \"programStatus\": \"{{programStatus}}\",\r\n  \"creationTime\": \"{{$isoTimestamp}}\",\r\n  \"lastModTime\": \"{{$isoTimestamp}}\" \r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/saveprogram"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve program by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a36e7c53-2011-4315-a490-fac99cd194ce",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"verifying programId\", () =>{\r",
+							"    var jsonData = pm.response.json();\r",
+							"    //getting the value of the environment variable and comparing with the retrieved id in this request\r",
+							"    pm.expect(jsonData.programId).to.eql(pm.environment.get(\"programId_env\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "56a6edcd-bf5f-40a0-8b9f-25659a1fb60b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/programs/{{programId_en}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Program by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "328dbf28-8570-43b8-b27d-422a7f9dde9c",
+						"exec": [
+							"//pm.environment.unset(\"programId_env\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "4b535f7e-f7b0-45b2-a30f-cfe860db4fef",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/deletebyprogid/{{programId_env}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Update program by ID",
+			"_postman_id": "45507c00-e7bf-4c45-950a-5d19ea310ca5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"programName\": \"{{programName}}\", \r\n\"programDescription\": \"automation QA\",\r\n \"programStatus\": \"{{programStatus}}\",\r\n  \"creationTime\": \"{{$isoTimestamp}}\", \r\n  \"lastModTime\": \"{{$isoTimestamp}}\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/putprogram/{{programId_env}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Update program by program name",
+			"_postman_id": "aefb9f3c-c698-455b-ba9e-6049e988cab4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"programName\": \"{{programName}}\",\r\n\"programDescription\": \"Automation program\",\r\n\"programStatus\": \"{{programStatus}}\",\r\n\"creationTime\": \"{{$isoTimestamp}}\",\r\n\"lastModTime\": \"{{$isoTimestamp}}\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/program/{{programName_env}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete program by name",
+			"_postman_id": "60fb1e21-2b20-4cfe-a97e-d47c4fd5cc6f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseurl_lms}}/deletebyprogname/{{programName_env}}"
+			},
+			"response": []
+		}
+	]
+}
