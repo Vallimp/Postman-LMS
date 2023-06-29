@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "6888a0f0-d5b2-403c-8253-6239e0b2cc9f",
+		"name": "Asignment Submit Module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All submission",
+			"_postman_id": "0ca55a6a-e28f-429a-b103-70aa1e10986c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/assignmentsubmission"
+			},
+			"response": []
+		},
+		{
+			"name": "Submit an assignment",
+			"_postman_id": "b303d93c-35fe-4f94-8884-32f5d489bb53",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"assignmentId\": 3001,\r\n        \"userId\": \"U5596\",\r\n        \"subDesc\": \"subDesc for U19\",\r\n        \"subComments\": \"subComments for U19\",\r\n        \"subDateTime\": \"06-29-2023 02:54:54\",\r\n        \"gradedBy\": null,\r\n        \"gradedDateTime\": null,\r\n        \"grade\": -1\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/assignmentsubmission"
+			},
+			"response": []
+		},
+		{
+			"name": "Grades by assignment ID",
+			"_postman_id": "01ad6b6f-6ae3-4b69-98d4-9bc4a8ada693",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/assignmentsubmission/getGrades/3001"
+			},
+			"response": []
+		},
+		{
+			"name": "Grades by StudentID",
+			"_postman_id": "7a6a96f1-ffdc-49db-a255-30c9f93cd897",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/assignmentsubmission/getGradesByStudentId/{STUDENTid}"
+			},
+			"response": []
+		},
+		{
+			"name": "Grades by BatchID",
+			"_postman_id": "97150455-d006-4b4d-80e4-45f8e2ceb470",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Submission by UserId",
+			"_postman_id": "177644d4-2d7b-4e3c-ac5f-105c2d28a0b6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/assignmentsubmission/student/U5596"
+			},
+			"response": []
+		},
+		{
+			"name": "Submission by BatchID",
+			"_postman_id": "849228ee-a296-43e7-b2cf-0b06ca63efeb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/assignmentsubmission/studentbatch/3705"
+			},
+			"response": []
+		},
+		{
+			"name": "Resubmit Assignment",
+			"_postman_id": "7ee50124-d654-40f8-b8c1-a856be4ebf04",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n        \"assignmentId\": 3001,\r\n        \"userId\": \"U5596\",\r\n        \"subDesc\": \"Resubmission\",\r\n        \"subComments\": \"corrections added\",\r\n        \"subPathAttach1\": \"filepath1\",\r\n        \"subPathAttach2\": \"filepath1\",\r\n        \"subPathAttach3\": \"filepath1\",\r\n        \"subPathAttach4\": \"filepath1\",\r\n        \"subPathAttach5\": \"filepath1\",\r\n        \"subDateTime\": \"06-29-2023 15:23:03\",\r\n        \"gradedBy\": null,\r\n        \"gradedDateTime\": null,\r\n        \"grade\": 0\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/assignmentsubmission/SubmissionID"
+			},
+			"response": []
+		},
+		{
+			"name": "Grade Assignment Submission",
+			"_postman_id": "e79faa41-c8bb-476f-a47e-3045dcbebc45",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n        \"assignmentId\": 3001,\r\n        \"userId\": \"U5596\",\r\n        \"subDesc\": \"Resubmission\",\r\n        \"subComments\": \"corrections added\",\r\n        \"subPathAttach1\": \"filepath1\",\r\n        \"subPathAttach2\": \"filepath1\",\r\n        \"subPathAttach3\": \"filepath1\",\r\n        \"subPathAttach4\": \"filepath1\",\r\n        \"subPathAttach5\": \"filepath1\",\r\n        \"subDateTime\": \"06-29-2023 15:23:03\",\r\n        \"gradedBy\": null,\r\n        \"gradedDateTime\": null,\r\n        \"grade\": 0\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/assignmentsubmission/gradesubmission/submissionID"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Submission",
+			"_postman_id": "51c0b6d5-c132-4ff1-aed9-ab07883229bc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseurl_lms}}/assignmentsubmission/1026"
+			},
+			"response": []
+		}
+	]
+}
