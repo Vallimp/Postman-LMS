@@ -7,7 +7,7 @@
 	"item": [
 		{
 			"name": "All submission",
-			"_postman_id": "0ca55a6a-e28f-429a-b103-70aa1e10986c",
+			"id": "0ca55a6a-e28f-429a-b103-70aa1e10986c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -20,7 +20,7 @@
 		},
 		{
 			"name": "Submit an assignment",
-			"_postman_id": "b303d93c-35fe-4f94-8884-32f5d489bb53",
+			"id": "b303d93c-35fe-4f94-8884-32f5d489bb53",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -42,7 +42,7 @@
 		},
 		{
 			"name": "Grades by assignment ID",
-			"_postman_id": "01ad6b6f-6ae3-4b69-98d4-9bc4a8ada693",
+			"id": "01ad6b6f-6ae3-4b69-98d4-9bc4a8ada693",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -55,7 +55,7 @@
 		},
 		{
 			"name": "Grades by StudentID",
-			"_postman_id": "7a6a96f1-ffdc-49db-a255-30c9f93cd897",
+			"id": "7a6a96f1-ffdc-49db-a255-30c9f93cd897",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -68,20 +68,20 @@
 		},
 		{
 			"name": "Grades by BatchID",
-			"_postman_id": "97150455-d006-4b4d-80e4-45f8e2ceb470",
+			"id": "97150455-d006-4b4d-80e4-45f8e2ceb470",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": "{{baseurl_lms}}/assignmentsubmission/grades/3705"
 			},
 			"response": []
 		},
 		{
 			"name": "Submission by UserId",
-			"_postman_id": "177644d4-2d7b-4e3c-ac5f-105c2d28a0b6",
+			"id": "177644d4-2d7b-4e3c-ac5f-105c2d28a0b6",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -94,7 +94,7 @@
 		},
 		{
 			"name": "Submission by BatchID",
-			"_postman_id": "849228ee-a296-43e7-b2cf-0b06ca63efeb",
+			"id": "849228ee-a296-43e7-b2cf-0b06ca63efeb",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -107,7 +107,7 @@
 		},
 		{
 			"name": "Resubmit Assignment",
-			"_postman_id": "7ee50124-d654-40f8-b8c1-a856be4ebf04",
+			"id": "7ee50124-d654-40f8-b8c1-a856be4ebf04",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -129,7 +129,7 @@
 		},
 		{
 			"name": "Grade Assignment Submission",
-			"_postman_id": "e79faa41-c8bb-476f-a47e-3045dcbebc45",
+			"id": "e79faa41-c8bb-476f-a47e-3045dcbebc45",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -151,7 +151,7 @@
 		},
 		{
 			"name": "Delete Submission",
-			"_postman_id": "51c0b6d5-c132-4ff1-aed9-ab07883229bc",
+			"id": "51c0b6d5-c132-4ff1-aed9-ab07883229bc",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
