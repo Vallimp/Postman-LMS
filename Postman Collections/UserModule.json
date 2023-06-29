@@ -43,7 +43,7 @@
 					}
 				}
 			],
-			"_postman_id": "1739f6c8-78b3-4083-8996-9e6584f1c4b2",
+			"id": "1739f6c8-78b3-4083-8996-9e6584f1c4b2",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -95,7 +95,7 @@
 					}
 				}
 			],
-			"_postman_id": "d8fa2627-7451-4f50-8457-07e2cdad7488",
+			"id": "d8fa2627-7451-4f50-8457-07e2cdad7488",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -132,7 +132,7 @@
 					}
 				}
 			],
-			"_postman_id": "115dfddd-f63d-4e2d-8906-39203a445249",
+			"id": "115dfddd-f63d-4e2d-8906-39203a445249",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -159,7 +159,7 @@
 					}
 				}
 			],
-			"_postman_id": "69f3ebe8-74ff-4a26-8c31-7970d604f39c",
+			"id": "69f3ebe8-74ff-4a26-8c31-7970d604f39c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -186,7 +186,7 @@
 					}
 				}
 			],
-			"_postman_id": "15e9e696-da5a-49ff-bc0a-475e4f89dd86",
+			"id": "15e9e696-da5a-49ff-bc0a-475e4f89dd86",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -213,7 +213,7 @@
 					}
 				}
 			],
-			"_postman_id": "f80ec703-3c3a-413b-a2d8-3279e0722ea1",
+			"id": "f80ec703-3c3a-413b-a2d8-3279e0722ea1",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -239,7 +239,7 @@
 					}
 				}
 			],
-			"_postman_id": "2d028057-4f97-4ea6-acaf-bc09c0820e3f",
+			"id": "2d028057-4f97-4ea6-acaf-bc09c0820e3f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -264,7 +264,7 @@
 					}
 				}
 			],
-			"_postman_id": "227a61b6-55e0-42e8-86bd-f0ee109b91a5",
+			"id": "227a61b6-55e0-42e8-86bd-f0ee109b91a5",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -298,7 +298,7 @@
 					}
 				}
 			],
-			"_postman_id": "11e8ea17-5e90-4c4d-ae4c-7a0df25a216d",
+			"id": "11e8ea17-5e90-4c4d-ae4c-7a0df25a216d",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -320,7 +320,7 @@
 		},
 		{
 			"name": "Assign Update User Role Program Batch Status",
-			"_postman_id": "7fa63085-bf62-40e0-8cfa-cf2d6e19c3d2",
+			"id": "7fa63085-bf62-40e0-8cfa-cf2d6e19c3d2",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -367,7 +367,7 @@
 					}
 				}
 			],
-			"_postman_id": "8abe79eb-b1ea-437f-9bf2-f421ce4de3e8",
+			"id": "8abe79eb-b1ea-437f-9bf2-f421ce4de3e8",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -389,7 +389,7 @@
 		},
 		{
 			"name": "Delete Req based on User ID",
-			"_postman_id": "366871a3-6cfc-474d-a169-bfa6afe1baf8",
+			"id": "366871a3-6cfc-474d-a169-bfa6afe1baf8",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -425,22 +425,19 @@
 	],
 	"variable": [
 		{
-			"id": "6620eef3-de7a-4cb2-9387-d30be4fc8c4d",
+			"id": "5bfdc20c-781d-4f18-a67a-0b2c3a3bebd6",
 			"key": "First_Name",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
-			"id": "771846fe-44aa-4965-baa6-f20732e680e8",
+			"id": "61fa18ce-a73f-421f-908b-b1e9c00d4d61",
 			"key": "UserID",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
-			"id": "e5d516ab-8b65-4033-adbd-339319640c18",
+			"id": "f93512e4-f7dc-46cb-91f4-3458e722bdef",
 			"key": "FirstName",
-			"value": "",
-			"type": "string"
+			"value": ""
 		}
 	]
 }
