@@ -7,7 +7,7 @@
 	"item": [
 		{
 			"name": "All assignments",
-			"_postman_id": "4f77240a-b151-4f30-af13-48929687adf2",
+			"id": "4f77240a-b151-4f30-af13-48929687adf2",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -40,7 +40,7 @@
 					}
 				}
 			],
-			"_postman_id": "29264290-d96c-4c3a-98dc-eb1a4a809a12",
+			"id": "29264290-d96c-4c3a-98dc-eb1a4a809a12",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -62,7 +62,7 @@
 		},
 		{
 			"name": "Update Assignment",
-			"_postman_id": "76a6c38d-0d99-4882-aee0-69ec1dc131cf",
+			"id": "76a6c38d-0d99-4882-aee0-69ec1dc131cf",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -84,7 +84,7 @@
 		},
 		{
 			"name": "By Assignment ID",
-			"_postman_id": "39529866-4557-4dc3-82aa-3b8106d4f7fa",
+			"id": "39529866-4557-4dc3-82aa-3b8106d4f7fa",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
