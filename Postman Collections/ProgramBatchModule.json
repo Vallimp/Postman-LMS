@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "9bc82522-d8ad-40bb-a45e-bdcdded7ab32",
+		"name": "Program Batch Controller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All batches",
+			"_postman_id": "54b43ac4-65aa-4af7-a090-1b500aa48b93",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/batches"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Batch",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "cede073d-7cba-463b-a608-b81f90dfb72e",
+						"exec": [
+							"const serialNo = Math.floor(Math.random() * 900) +100;\r",
+							"pm.environment.set(\"serialNo_batch\", serialNo);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "64399eaa-f4fa-4bb8-8f4c-9a7dec27658c",
+						"exec": [
+							"//validate status code\r",
+							"pm.test(\"status code validation\", ()=>{\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"//set batch id as envt variable\r",
+							"pm.test(\"setting batch id as environment variable\", function () {\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"batchId_env\", jsonData.batchId);\r",
+							"pm.environment.set(\"batchName_env\", jsonData.batchName);\r",
+							"pm.environment.set(\"batchDescription_env\", jsonData.batchDescription);\r",
+							"pm.environment.set(\"batchNoOfClasses_env\", jsonData.batchNoOfClasses);\r",
+							"pm.environment.set(\"programName_batch\", jsonData.programName);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "7cc75801-bb70-46ee-b19e-aa928f89f1de",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"batchName\": \"Samplebatch_{{serialNo_batch}}\",\r\n        \"batchDescription\": \"{{batchDescription}}\",\r\n        \"batchStatus\": \"{{batchStatus}}\",\r\n        \"batchNoOfClasses\": \"{{batchNoOfClasses}}\",\r\n        \"programId\": \"{{programId_env}}\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/batches"
+			},
+			"response": []
+		},
+		{
+			"name": "Batch by Batch ID",
+			"_postman_id": "45d417ff-c4f5-4a3f-9ee8-84ed46dfbbcd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/batches/batchId/{{batchId_env}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Batch by Batch Name",
+			"_postman_id": "9967787e-673f-400b-9c8e-27507ad57ebc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/batches/batchName/{{batchName_env}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Batch by ProgramID",
+			"_postman_id": "5a095f7d-6c1f-4db5-84d8-082787004f5f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/batches/program/{{programId_env}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Update batch by batch ID",
+			"_postman_id": "20c20dc0-da99-45f3-a660-cd21dae4810f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"batchName\": \"{{batchName_env}}\",\r\n        \"batchDescription\": \"{{batchDescription_env}}\",\r\n        \"batchStatus\": \"Inactive\",\r\n        \"batchNoOfClasses\": \"{{batchNoOfClasses_env}}\",\r\n        \"programId\": \"{{programId_env}}\",\r\n        \"programName\" : \"{{programName_batch}}\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/batches/{{batchId_env}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Batch by batch ID",
+			"_postman_id": "6aaba7fd-d814-4f0e-9d99-7346ef02a138",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseurl_lms}}/batches/{{batchId_env}}"
+			},
+			"response": []
+		}
+	]
+}
