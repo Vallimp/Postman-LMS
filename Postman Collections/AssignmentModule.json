@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "247b9c81-edf5-451c-be8a-413ab3e6dbaa",
+		"name": "Assignment Module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All assignments",
+			"_postman_id": "4f77240a-b151-4f30-af13-48929687adf2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl_lms}}/assignments"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Assignment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8a51b32d-3911-4b83-8a0d-c632bd646d88",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"\r",
+							"//set batch id as envt variable\r",
+							"pm.test(\"setting assignment id as environment variable\", function () {\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"assignmentId_env\", jsonData.batchId);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "29264290-d96c-4c3a-98dc-eb1a4a809a12",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"assignmentName\": \"sampleteam_367\",\r\n        \"assignmentDescription\": \"first assignment creation\",\r\n        \"comments\": \"assigning\",\r\n        \"dueDate\": \"2023-07-04T12:43:19.832+00:00\",\r\n        \"pathAttachment1\": \"music\",\r\n        \"pathAttachment2\": \"electronics\",\r\n        \"pathAttachment3\": \"circuits\",\r\n        \"pathAttachment4\": \"diodes\",\r\n        \"pathAttachment5\": \"abcde\",\r\n        \"batchId\": 3705,\r\n        \"createdBy\": \"U2294\",\r\n        \"graderId\": \"U2294\"\r\n    }\r\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/assignments"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Assignment",
+			"_postman_id": "76a6c38d-0d99-4882-aee0-69ec1dc131cf",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"assignmentId\": 2993,\r\n    \"assignmentName\": \"sampleteam_367\",\r\n    \"assignmentDescription\": \"first assignment creation\",\r\n    \"comments\": \"assigning\",\r\n    \"dueDate\": \"2023-07-04T12:43:19.832+00:00\",\r\n    \"pathAttachment1\": \"music\",\r\n    \"pathAttachment2\": \"transistors\",\r\n    \"pathAttachment3\": \"circuits\",\r\n    \"pathAttachment4\": \"diodes\",\r\n    \"pathAttachment5\": \"abcde\",\r\n    \"batchId\": 3705,\r\n    \"createdBy\": \"U2294\",\r\n    \"graderId\": \"U2294\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl_lms}}/assignments/{{assignmentId_env}}"
+			},
+			"response": []
+		},
+		{
+			"name": "By Assignment ID",
+			"_postman_id": "39529866-4557-4dc3-82aa-3b8106d4f7fa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseurl_lms}}/assignments/{{assignmentId_env}}"
+			},
+			"response": []
+		}
+	]
+}
